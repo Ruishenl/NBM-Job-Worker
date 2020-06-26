@@ -67,5 +67,4 @@ def _add_employee_to_job(current_job: JobCC):
 def _schedule_trigger(job_to_be_checked_later: JobCC):
     job_hrs = job_to_be_checked_later.hrs_required
     # Use seconds here so we don't waste too much time here
-    time.sleep(20)
     redis_queue.enqueue_in(datetime.timedelta(seconds=job_hrs * 2), _check_on_job, job_to_be_checked_later)
